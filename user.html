@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON and Table Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JSON and Table Example</h1>
+
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be dynamically generated here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Sample JSON data
+        var jsonData = {
+            "users": [
+                {
+                    "id": 1,
+                    "name": "John Doe",
+                    "email": "john.doe@example.com",
+                    "role": "Admin"
+                },
+                {
+                    "id": 2,
+                    "name": "Jane Smith",
+                    "email": "jane.smith@example.com",
+                    "role": "User"
+                },
+                {
+                    "id": 3,
+                    "name": "Bob Johnson",
+                    "email": "bob.johnson@example.com",
+                    "role": "Editor"
+                },
+                {
+                    "id": 4,
+                    "name": "Alice Brown",
+                    "email": "alice.brown@example.com",
+                    "role": "User"
+                },
+                {
+                    "id": 5,
+                    "name": "Charlie Wilson",
+                    "email": "charlie.wilson@example.com",
+                    "role": "Viewer"
+                }
+            ]
+        };
+
+        // Function to generate table rows from JSON data
+        function generateTableRows(data) {
+            var tableBody = document.getElementById("userTable").getElementsByTagName('tbody')[0];
+
+            data.users.map(function(user) {
+                var row = tableBody.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+
+                cell1.textContent = user.id;
+                cell2.textContent = user.name;
+                cell3.textContent = user.email;
+                cell4.textContent = user.role;
+            });
+        }
+
+        // Call the function with the JSON data
+        generateTableRows(jsonData);
+    </script>
+
+</body>
+</html>
